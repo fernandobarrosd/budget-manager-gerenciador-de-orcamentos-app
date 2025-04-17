@@ -27,5 +27,5 @@ como concluído automaticamente
 - Não é obrigatório definir a data de término quando for cadastrar um orçamento
 - Caso eu defina um orçamento com uma data de término e a passou da data, deve automaticamente adicionar o orçamento na categoria<br>
 de orçamentos expirados
-- Não deve ser possível alterar orçamentos expirados, e concluídos
+- Não deve ser possível alterar orçamentos expirados e concluídos
 - Quando for efetuar o backup dos orçamentos salvar em um arquivo .json
