@@ -7,17 +7,21 @@ Um aplicativo de gerenciamento de orçamentos
 - Cadastro de orçamentos
 - Listar os orçamentos
 - Pesquisar orçamentos
-- Filtar os orçamentos pela data, categoria
+- Filtar os orçamentos pela data, categoria e os que foram concluídos ou não
 - Deletar orçamentos
+- Deletar automaticamente os orçamentos que possuem uma data de finalização
 - Editar orçamentos
 - Marcar os requisitos do orçamento
 - Poder efetuar o backup dos orçamentos e posteriormente recuperar todos os orçamentos
 
 
 ## Requisitos não funcionais
-- Os orçamentos serão salvos localmente no dispositivo, utilizando o Room DB
+- Os orçamentos serão salvos localmente no dispositivo
 - O padrão de projeto deve ser o MVVM
 - Não é necessário se autenticar na aplicativo pra poder utilizar as funcionalidades
+- Caso eu defina um orçamento com uma data de finalização e a passou da data, deve adicionar o orçamento na categoria de<br>
+orçamentos expirados
+- Não deve ser possível alterar orçamentos expirados
 
 ## O que são os requisitos do orçamento
 Todos os itens do orçamento
