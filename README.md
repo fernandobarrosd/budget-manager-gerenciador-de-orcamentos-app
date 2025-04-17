@@ -18,7 +18,7 @@ Um aplicativo de gerenciamento de orçamentos
 - Os orçamentos serão salvos localmente no dispositivo
 - O padrão de projeto deve ser o MVVM
 - Não é necessário se autenticar no aplicativo pra poder utilizar as funcionalidades
-- Para poder marcar um orçamento como concluído, todos os itens do orçamento devem ser concluídos
+- Para poder marcar um orçamento como concluído, todos os itens do orçamento devem estar concluídos
 - Para poder cadastrar um orçamento, o orçamento deve possuir no minimo um item
 - As categorias que um orçamento pode receber são: concluido, não concluido e expirado
 - Marcar os orçamentos como concluídos caso os items sejam concluídos
