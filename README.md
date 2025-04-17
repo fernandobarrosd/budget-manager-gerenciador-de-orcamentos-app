@@ -18,7 +18,7 @@ Um aplicativo de gerenciamento de orçamentos
 ## Requisitos não funcionais
 - Os orçamentos serão salvos localmente no dispositivo
 - O padrão de projeto deve ser o MVVM
-- Não é necessário se autenticar na aplicativo pra poder utilizar as funcionalidades
+- Não é necessário se autenticar no aplicativo pra poder utilizar as funcionalidades
 - Para poder marcar um orçamento como concluído, todos os itens do orçamento devem ser concluídos
 - Para poder cadastrar um orçamento, o orçamento deve possuir no minimo um item
 - Não é obrigatório definir a data de término quando for cadastrar um orçamento
