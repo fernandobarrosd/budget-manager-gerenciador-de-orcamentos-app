@@ -25,3 +25,4 @@ Um aplicativo de gerenciamento de orçamentos
 - Caso eu defina um orçamento com uma data de término e a passou da data, deve automaticamente adicionar o orçamento na categoria<br>
 de orçamentos expirados
 - Não deve ser possível alterar orçamentos expirados
+- Quando for efetuar o backup dos orçamentos, salvar em um arquivo .json
