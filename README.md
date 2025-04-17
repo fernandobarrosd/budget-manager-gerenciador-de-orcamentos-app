@@ -20,7 +20,7 @@ Um aplicativo de gerenciamento de orçamentos
 - O padrão de projeto deve ser o MVVM
 - Não é necessário se autenticar na aplicativo pra poder utilizar as funcionalidades
 - Para poder marcar um orçamento como concluído, todos os itens do orçamento devem ser concluídos
-- Para poder cadastrar um orçamento, o orçamento deve possuir no minimo um iten
+- Para poder cadastrar um orçamento, o orçamento deve possuir no minimo um item
 - Não é obrigatório definir a data de finalização quando for cadastrar um orçamento
 - Caso eu defina um orçamento com uma data de finalização e a passou da data, deve adicionar o orçamento na categoria de<br>
 orçamentos expirados
