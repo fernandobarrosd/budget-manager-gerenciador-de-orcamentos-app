@@ -21,7 +21,7 @@ Um aplicativo de gerenciamento de orçamentos
 - Para poder marcar um orçamento como concluído, todos os itens do orçamento devem estar concluídos
 - Para poder cadastrar um orçamento, o orçamento deve possuir no minimo um item
 - As categorias que um orçamento pode receber são: concluido, não concluido e expirado
-- Marcar os orçamentos como concluídos caso os items sejam concluídos
+- Marcar os orçamentos como concluídos caso os items do orçamento estejam concluídos
 - Caso todos items do orçamento estiverem concluídos e o orçamento tiver uma data de término, deve marcar o orçamento<br>
 como concluído automaticamente
 - Não é obrigatório definir a data de término quando for cadastrar um orçamento
