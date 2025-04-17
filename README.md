@@ -15,7 +15,7 @@ Um aplicativo de gerenciamento de orçamentos
 
 
 ## Requisitos não funcionais
-- Os orçamentos serão salvos localmente no dispositivo
+- Os orçamentos devem ser salvos localmente no dispositivo
 - O padrão de projeto deve ser o MVVM
 - Não é necessário se autenticar no aplicativo pra poder utilizar as funcionalidades
 - Para poder marcar um orçamento como concluído, todos os itens do orçamento devem estar concluídos
