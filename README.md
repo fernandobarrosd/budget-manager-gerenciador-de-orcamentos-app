@@ -7,7 +7,7 @@ Um aplicativo de gerenciamento de orçamentos
 - Cadastro de orçamentos
 - Listar os orçamentos
 - Pesquisar orçamentos
-- Filtar os orçamentos pela data, categoria, tag, quantidade de itens do orçamento e os que foram concluídos ou não
+- Filtar os orçamentos pela data, categoria, tag e a quantidade de itens do orçamento
 - Deletar orçamentos
 - Alterar orçamentos
 - Marcar os itens do orçamento como concluídos
