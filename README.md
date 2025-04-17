@@ -11,7 +11,7 @@ Um aplicativo de gerenciamento de orçamentos
 - Deletar orçamentos
 - Deletar automaticamente os orçamentos que possuem uma data de finalização
 - Alterar orçamentos
-- Marcar os requisitos do orçamento
+- Marcar os requisitos do orçamento como concluídos
 - Poder efetuar o backup dos orçamentos e posteriormente recuperar todos os orçamentos
 
 
