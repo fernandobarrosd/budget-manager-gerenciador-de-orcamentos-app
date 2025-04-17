@@ -1,2 +1,3 @@
-# budget-manager-gerenciador-de-orcamentos-app
+# Budget Manager - Gerenciador de orçamentos
+
 Um aplicativo de gerenciamento de orçamentos
