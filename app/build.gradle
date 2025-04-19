@@ -14,6 +14,7 @@ android {
     defaultConfig {
         applicationId "com.fernando.budgetmanager_gerenciadordeorcamentos"
         minSdk 26
+        compileSdk = 35
         targetSdk 34
         versionCode 1
         versionName "1.0"
