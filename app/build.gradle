@@ -49,6 +49,10 @@ dependencies {
     implementation libs.hilt
     ksp(libs.hilt.compiler)
 
+    // Navigation component
+    implementation libs.navigation.ui
+    implementation libs.navigation.fragment
+
     implementation libs.activity.ktx
     implementation libs.fragment.ktx
     implementation libs.androidx.core.ktx
