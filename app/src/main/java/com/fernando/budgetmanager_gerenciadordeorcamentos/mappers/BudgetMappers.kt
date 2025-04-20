@@ -20,6 +20,16 @@ fun Budget.toRoomEntity() : BudgetEntity {
     )
 }
 
+fun BudgetItem.toRoomEntity(budgetID: String) : BudgetItemEntity {
+    return BudgetItemEntity(
+        budgetItemID = this.id,
+        budgetID = budgetID,
+        name = this.name,
+        price = this.priceValue,
+        isCompleted = this.isCompleted
+    )
+}
+
 fun BudgetItemEntity.toDomainEntity() : BudgetItem {
     return BudgetItem(
         id = this.budgetItemID,
