@@ -7,5 +7,5 @@ import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entit
 @Dao
 interface BudgetTagEntityDAO {
     @Insert
-    suspend fun saveBudgetTag(budgetTags: List<BudgetTagEntity>)
+    suspend fun saveBudgetTags(budgetTags: List<BudgetTagEntity>)
 }
