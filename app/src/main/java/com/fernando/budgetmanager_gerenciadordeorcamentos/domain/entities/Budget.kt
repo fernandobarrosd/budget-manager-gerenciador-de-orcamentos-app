@@ -1,10 +1,11 @@
 package com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities
 
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.BudgetItems
+import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Date
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Name
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Price
 import com.fernando.budgetmanager_gerenciadordeorcamentos.enums.BudgetCategory
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.util.UUID
 
 class Budget {
@@ -24,13 +25,16 @@ class Budget {
     val items: MutableList<BudgetItem>
         get() = _items.value
 
-    private val _createdAt: LocalDateTime
-    val createdAt: LocalDateTime
+    private val _createdAt: Date
+    val createdAt: Date
         get() = _createdAt
 
-    private val _finishedAt: LocalDateTime?
-    val finishedAt: LocalDateTime?
-        get() = _finishedAt
+    val createdAtValue: LocalDate
+        get() = createdAt.value
+
+    private val _finishedAt: Date?
+    val finishedAt: LocalDate?
+        get() = _finishedAt?.value
 
     private val _tags: MutableList<Name>
     val tags: List<String>
@@ -41,8 +45,8 @@ class Budget {
 
 
     constructor(id: String, name: Name, category: BudgetCategory,
-                items: BudgetItems, createdAt: LocalDateTime,
-                finishedAt: LocalDateTime?, tags: MutableList<Name>) {
+                items: BudgetItems, createdAt: Date,
+                finishedAt: Date?, tags: MutableList<Name>) {
 
         this._id = id
         this._name = name
@@ -54,10 +58,10 @@ class Budget {
     }
 
 
-    constructor(name: Name, items: BudgetItems, finishedAt: LocalDateTime?,
+    constructor(name: Name, items: BudgetItems, finishedAt: Date?,
                 tags: MutableList<Name>) {
         this._id = UUID.randomUUID().toString()
-        this._createdAt = LocalDateTime.now()
+        this._createdAt = Date(LocalDate.now())
         this._name = name
         this._category = BudgetCategory.NOT_COMPLETED
         this._items = items
@@ -73,6 +77,16 @@ class Budget {
         }
     }
 
+    fun completeWithFinishedAt() {
+        if (this._finishedAt == null) return
+
+        val currentDate = Date(LocalDate.now())
+
+        if (this._category == BudgetCategory.NOT_COMPLETED == currentDate.isEqual(_finishedAt)) {
+            complete()
+        }
+    }
+
     fun allBudgetItemsIsCompleted() : Boolean {
         return items.all { it.isCompleted }
     }
@@ -82,9 +96,9 @@ class Budget {
         if (this._category == BudgetCategory.COMPLETED ||
             this._category == BudgetCategory.EXPIRED) return
 
-        val currentDate = LocalDateTime.now()
+        val currentDate = Date(LocalDate.now())
 
-        if (this._category == BudgetCategory.NOT_COMPLETED && currentDate.isAfter(finishedAt)) {
+        if (this._category == BudgetCategory.NOT_COMPLETED && currentDate.isAfter(_finishedAt)) {
             this._category = BudgetCategory.EXPIRED
         }
     }

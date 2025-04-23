@@ -3,6 +3,7 @@ package com.fernando.budgetmanager_gerenciadordeorcamentos.mappers
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.BudgetItem
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.BudgetItems
+import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Date
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Name
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Price
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetEntity
@@ -15,7 +16,7 @@ fun Budget.toRoomEntity() : BudgetEntity {
         budgetID = this.id,
         name = this.name,
         category = this.category,
-        createdAt = this.createdAt,
+        createdAt = this.createdAtValue,
         finishedAt = this.finishedAt
     )
 }
@@ -51,8 +52,8 @@ fun BudgetEntityWithItemsAndTags.toDomainEntity() : Budget {
     return Budget(
         id = this.budget.budgetID,
         name = Name(this.budget.name),
-        createdAt = this.budget.createdAt,
-        finishedAt = this.budget.finishedAt,
+        createdAt = Date(this.budget.createdAt),
+        finishedAt = this.budget.finishedAt?.let { Date(it) },
         category = this.budget.category,
         items = BudgetItems(budgetItemsList),
         tags = budgetTagNamesList

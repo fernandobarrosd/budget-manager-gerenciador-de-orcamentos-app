@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Budget Manager - Gerenciador de orçamentos</string>
+    <string name="button_add_budget_content_description">Button add budget</string>
 </resources>
