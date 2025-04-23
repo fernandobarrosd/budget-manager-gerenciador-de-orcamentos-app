@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <SearchView
+        android:id="@+id/search_budgets_by_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_search_input"
+        android:searchIcon="@drawable/search_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:iconifiedByDefault="false"
+        android:theme="@style/Theme.SearchView"
+        android:queryHint="Nome do orçamento"
+        android:queryBackground="@android:color/transparent"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/budgets_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_budgets_by_name_input"
+        tools:itemCount="6"
+        tools:listitem="@layout/layout_budget" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:backgroundTint="?colorPrimary"
+        android:contentDescription="@string/button_add_budget_content_description"
+        android:src="@drawable/add_icon"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RedundantDescriptionCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
