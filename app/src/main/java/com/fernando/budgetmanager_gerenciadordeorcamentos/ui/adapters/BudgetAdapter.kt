@@ -11,7 +11,9 @@ import com.fernando.budgetmanager_gerenciadordeorcamentos.databinding.LayoutBudg
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
 import com.fernando.budgetmanager_gerenciadordeorcamentos.enums.BudgetCategory
 
-class BudgetAdapter(private val context: Context, private val budgets: List<Budget>) : RecyclerView.Adapter<BudgetAdapter.ViewHolder>() {
+class BudgetAdapter(
+    private val context: Context,
+    private val budgets: List<Budget>) : RecyclerView.Adapter<BudgetAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BudgetAdapter.ViewHolder {
         val binding = LayoutBudgetBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -33,6 +35,7 @@ class BudgetAdapter(private val context: Context, private val budgets: List<Budg
         fun bind(budget: Budget) {
             binding.apply {
                 textBudgetName.text = budget.name
+                textBudgetCategory.text = budget.category.name
                 textBudgetCreatedAt.text = budget.createdAt.formatDate()
 
                 setBudgetCategoryTextBackground(budget.category)

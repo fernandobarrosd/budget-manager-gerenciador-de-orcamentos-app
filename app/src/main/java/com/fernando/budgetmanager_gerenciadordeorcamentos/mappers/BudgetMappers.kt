@@ -7,9 +7,8 @@ import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Da
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Name
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Price
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetEntity
-import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetEntityWithItemsAndTags
+import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.relationships.BudgetWithItems
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetItemEntity
-import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetTagEntity
 
 fun Budget.toRoomEntity() : BudgetEntity {
     return BudgetEntity(
@@ -40,13 +39,8 @@ fun BudgetItemEntity.toDomainEntity() : BudgetItem {
     )
 }
 
-fun BudgetTagEntity.toDomainEntity() : String = this.tagName
-
-fun BudgetEntityWithItemsAndTags.toDomainEntity() : Budget {
+fun BudgetWithItems.toDomainEntity() : Budget {
     val budgetItemsList = this.items.map { item -> item.toDomainEntity() }
-        .toMutableList()
-
-    val budgetTagNamesList = this.tags.map { tagName -> Name(tagName.toDomainEntity()) }
         .toMutableList()
 
     return Budget(
@@ -56,6 +50,5 @@ fun BudgetEntityWithItemsAndTags.toDomainEntity() : Budget {
         finishedAt = this.budget.finishedAt?.let { Date(it) },
         category = this.budget.category,
         items = BudgetItems(budgetItemsList),
-        tags = budgetTagNamesList
     )
 }
