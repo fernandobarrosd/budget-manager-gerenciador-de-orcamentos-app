@@ -11,7 +11,6 @@ class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: Bud
     : BudgetRepository {
     override suspend fun findAllBudgets(): List<Budget> {
         val budgets = budgetEntityDAO.findAllBudgets()
-        if (budgets.isEmpty()) return listOf()
 
         return budgets.map { it.toDomainEntity() }
     }
