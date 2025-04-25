@@ -5,19 +5,24 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetEntity
-import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.entities.BudgetEntityWithItemsAndTags
+import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.relationships.BudgetWithItems
 
 @Dao
 interface BudgetEntityDAO {
-    @Query("SELECT * FROM budget_table")
-    suspend fun findAllBudgets() : List<BudgetEntityWithItemsAndTags>
+    @Transaction
+    @Query("SELECT * FROM budget_table ORDER BY name")
+    suspend fun findAllBudgets() : List<BudgetWithItems>
+
+    @Transaction
+    @Query("SELECT * FROM budget_table WHERE name LIKE '%' || :budgetName || '%' ORDER BY name")
+    suspend fun searchBudgetByName(budgetName: String) : List<BudgetWithItems>
 
     @Insert
     suspend fun saveBudget(budget: BudgetEntity)
 
     @Transaction
     @Query("SELECT * FROM budget_table WHERE budget_id = :budgetID")
-    suspend fun findBudgetByID(budgetID: String) : BudgetEntityWithItemsAndTags
+    suspend fun findBudgetByID(budgetID: String) : BudgetWithItems
 
     @Transaction
     @Query("DELETE FROM budget_table WHERE budget_id = :budgetID")

@@ -10,9 +10,18 @@ import javax.inject.Inject
 class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: BudgetEntityDAO)
     : BudgetRepository {
     override suspend fun findAllBudgets(): List<Budget> {
-        return budgetEntityDAO.findAllBudgets().map { budgetEntity ->
-            budgetEntity.toDomainEntity()
-        }
+        val budgets = budgetEntityDAO.findAllBudgets()
+        if (budgets.isEmpty()) return listOf()
+
+        return budgets.map { it.toDomainEntity() }
+    }
+
+    override suspend fun searchBudgetByName(budgetName: String): List<Budget> {
+        val budgets = budgetEntityDAO.searchBudgetByName(budgetName)
+
+        if (budgets.isEmpty()) return listOf()
+
+        return budgets.map { it.toDomainEntity() }
     }
 
     override suspend fun findBudgetByID(budgetID: String): Budget {
@@ -25,9 +34,8 @@ class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: Bud
         budgetEntityDAO.deleteBudget(budgetID)
     }
 
-    override suspend fun saveBudget(budget: Budget): Budget {
+    override suspend fun saveBudget(budget: Budget) {
         val budgetToSave = budget.toRoomEntity()
         budgetEntityDAO.saveBudget(budgetToSave)
-        return budget
     }
 }

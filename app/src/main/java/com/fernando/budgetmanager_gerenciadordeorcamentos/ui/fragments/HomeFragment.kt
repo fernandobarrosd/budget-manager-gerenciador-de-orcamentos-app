@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fernando.budgetmanager_gerenciadordeorcamentos.databinding.FragmentHomeBinding
 import com.fernando.budgetmanager_gerenciadordeorcamentos.ui.adapters.BudgetAdapter
-import com.fernando.budgetmanager_gerenciadordeorcamentos.ui.viewmodels.HomeViewModel
+import com.fernando.budgetmanager_gerenciadordeorcamentos.ui.viewmodels.BudgetsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private val homeViewModel : HomeViewModel by viewModels()
+    private val budgetsViewModel : BudgetsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,8 +31,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         initObservers()
+        initListeners()
 
-        homeViewModel.loadBudgets()
+        budgetsViewModel.loadBudgets()
+    }
+
+    private fun initListeners() {
+        binding.searchBudgetsByNameInput.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(budgetNameQuery: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(budgetNameQuery: String?): Boolean {
+                if (budgetNameQuery == null) return false
+                if (budgetNameQuery.isEmpty()) budgetsViewModel.loadBudgets()
+
+                budgetsViewModel.searchBudgets(budgetNameQuery)
+
+                return true
+            }
+
+        })
     }
 
     private fun setupRecyclerView() {
@@ -37,7 +59,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initObservers() {
-        homeViewModel.budgets.observe(viewLifecycleOwner) { budgets ->
+        budgetsViewModel.budgets.observe(viewLifecycleOwner) { budgets ->
             val budgetAdapter = BudgetAdapter(requireContext(), budgets)
             binding.budgetsRecyclerView.adapter = budgetAdapter
         }

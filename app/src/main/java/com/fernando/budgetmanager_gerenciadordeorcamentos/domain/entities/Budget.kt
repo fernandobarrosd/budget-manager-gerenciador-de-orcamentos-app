@@ -36,17 +36,12 @@ class Budget {
     val finishedAt: LocalDate?
         get() = _finishedAt?.value
 
-    private val _tags: MutableList<Name>
-    val tags: List<String>
-        get() = _tags.map { it.value }
-
     val total: Price
         get() = Price(items.sumOf { it.priceValue })
 
 
     constructor(id: String, name: Name, category: BudgetCategory,
-                items: BudgetItems, createdAt: Date,
-                finishedAt: Date?, tags: MutableList<Name>) {
+                items: BudgetItems, createdAt: Date, finishedAt: Date?) {
 
         this._id = id
         this._name = name
@@ -54,19 +49,16 @@ class Budget {
         this._createdAt = createdAt
         this._finishedAt = finishedAt
         this._category = category
-        this._tags = tags
     }
 
 
-    constructor(name: Name, items: BudgetItems, finishedAt: Date?,
-                tags: MutableList<Name>) {
+    constructor(name: Name, items: BudgetItems, finishedAt: Date?) {
         this._id = UUID.randomUUID().toString()
         this._createdAt = Date(LocalDate.now())
         this._name = name
         this._category = BudgetCategory.NOT_COMPLETED
         this._items = items
         this._finishedAt = finishedAt
-        this._tags = tags
     }
 
     fun complete() {
