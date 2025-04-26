@@ -1,6 +1,7 @@
 package com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.repositories
 
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
+import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Date
 
 interface BudgetRepository {
     suspend fun saveBudget(budget: Budget)
@@ -8,6 +9,7 @@ interface BudgetRepository {
     suspend fun findBudgetByID(budgetID: String) : Budget
     suspend fun findBudgetsByCategoryName(categoryName: String) : List<Budget>
     suspend fun findBudgetsByItemsQuantity(quantity: Int) : List<Budget>
+    suspend fun findBudgetsByCreatedAt(createdAt: Date) : List<Budget>
     suspend fun searchBudgetByName(budgetName: String) : List<Budget>
     suspend fun deleteBudgetByID(budgetID: String)
 }
