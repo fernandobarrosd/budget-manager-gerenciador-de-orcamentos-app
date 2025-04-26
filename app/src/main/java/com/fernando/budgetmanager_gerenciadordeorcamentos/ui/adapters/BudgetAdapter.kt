@@ -35,7 +35,7 @@ class BudgetAdapter(
         fun bind(budget: Budget) {
             binding.apply {
                 textBudgetName.text = budget.name
-                textBudgetCategory.text = budget.category.name
+                textBudgetCategory.text = budget.category.value
                 textBudgetCreatedAt.text = budget.createdAt.formatDate()
 
                 setBudgetCategoryTextBackground(budget.category)
