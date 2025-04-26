@@ -6,6 +6,8 @@ interface BudgetRepository {
     suspend fun saveBudget(budget: Budget)
     suspend fun findAllBudgets() : List<Budget>
     suspend fun findBudgetByID(budgetID: String) : Budget
+    suspend fun findBudgetsByCategoryName(categoryName: String) : List<Budget>
+    suspend fun findBudgetsByItemsQuantity(quantity: Int) : List<Budget>
     suspend fun searchBudgetByName(budgetName: String) : List<Budget>
     suspend fun deleteBudgetByID(budgetID: String)
 }

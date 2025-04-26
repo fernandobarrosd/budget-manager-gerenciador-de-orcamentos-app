@@ -15,6 +15,22 @@ class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: Bud
         return budgets.map { it.toDomainEntity() }
     }
 
+    override suspend fun findBudgetsByCategoryName(categoryName: String): List<Budget> {
+        val budgets = findAllBudgets()
+
+        return budgets.filter { budget ->
+            budget.category.value == categoryName
+        }
+    }
+
+    override suspend fun findBudgetsByItemsQuantity(quantity: Int): List<Budget> {
+        val budgets = findAllBudgets()
+
+        return budgets.filter { budget ->
+            budget.items.size == quantity
+        }
+    }
+
     override suspend fun searchBudgetByName(budgetName: String): List<Budget> {
         val budgets = budgetEntityDAO.searchBudgetByName(budgetName)
 
