@@ -1,6 +1,7 @@
 package com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.repositories
 
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
+import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Date
 import com.fernando.budgetmanager_gerenciadordeorcamentos.mappers.toDomainEntity
 import com.fernando.budgetmanager_gerenciadordeorcamentos.mappers.toRoomEntity
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.repositories.BudgetRepository
@@ -28,6 +29,14 @@ class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: Bud
 
         return budgets.filter { budget ->
             budget.items.size == quantity
+        }
+    }
+
+    override suspend fun findBudgetsByCreatedAt(createdAt: Date): List<Budget> {
+        val budgets = findAllBudgets()
+
+        return budgets.filter { budget ->
+            budget.createdAt.isEqual(createdAt)
         }
     }
 
