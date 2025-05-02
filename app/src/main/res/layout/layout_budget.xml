@@ -11,6 +11,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_budget_name"
         android:layout_width="155dp"
+        android:paddingVertical="5dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -25,26 +26,30 @@
         android:id="@+id/text_budget_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
         android:background="@drawable/background_budget_category_not_completed"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
         app:fontFamily="@font/poppins_medium"
-        android:text="NOT COMPLETED"/>
+        android:text="@string/not_completed_text"
+        android:textAllCaps="true"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_budget_createdAt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="21/04/2025"
+        tools:text="21/04/2025"
+        android:background="@drawable/backgroud_button_select"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_budget_name"
         android:layout_marginTop="10dp"
-        android:textColor="#1B1A1A"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:fontFamily="@font/poppins_medium"/>
 

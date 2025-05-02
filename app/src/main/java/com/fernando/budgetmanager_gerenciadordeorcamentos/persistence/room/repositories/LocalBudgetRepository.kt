@@ -2,6 +2,7 @@ package com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.room.repo
 
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.valueobjects.Date
+import com.fernando.budgetmanager_gerenciadordeorcamentos.enums.BudgetCategory
 import com.fernando.budgetmanager_gerenciadordeorcamentos.mappers.toDomainEntity
 import com.fernando.budgetmanager_gerenciadordeorcamentos.mappers.toRoomEntity
 import com.fernando.budgetmanager_gerenciadordeorcamentos.persistence.repositories.BudgetRepository
@@ -16,11 +17,11 @@ class LocalBudgetRepository @Inject constructor(private val budgetEntityDAO: Bud
         return budgets.map { it.toDomainEntity() }
     }
 
-    override suspend fun findBudgetsByCategoryName(categoryName: String): List<Budget> {
+    override suspend fun findBudgetsByCategoryName(category: BudgetCategory): List<Budget> {
         val budgets = findAllBudgets()
 
         return budgets.filter { budget ->
-            budget.category.value == categoryName
+            budget.category == category
         }
     }
 
