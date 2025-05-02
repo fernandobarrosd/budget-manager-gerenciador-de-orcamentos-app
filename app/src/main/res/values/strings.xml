@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Budget Manager - Gerenciador de orçamentos</string>
     <string name="button_add_budget_content_description">Button add budget</string>
+    <string name="apply_filters_text">Aplicar filtros</string>
+    <string name="completed_text">Completado</string>
+    <string name="not_completed_text">Não completado</string>
+    <string name="expired_text">Expirado</string>
+    <string name="budget_category_button_select_text">Categoria</string>
+    <string name="btn_remove_filter">Remover filtros</string>
 </resources>

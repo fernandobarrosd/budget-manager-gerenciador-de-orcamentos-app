@@ -3,10 +3,8 @@ package com.fernando.budgetmanager_gerenciadordeorcamentos.ui.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
-import com.fernando.budgetmanager_gerenciadordeorcamentos.R
 import com.fernando.budgetmanager_gerenciadordeorcamentos.databinding.LayoutBudgetBinding
 import com.fernando.budgetmanager_gerenciadordeorcamentos.domain.entities.Budget
 import com.fernando.budgetmanager_gerenciadordeorcamentos.enums.BudgetCategory
@@ -35,7 +33,7 @@ class BudgetAdapter(
         fun bind(budget: Budget) {
             binding.apply {
                 textBudgetName.text = budget.name
-                textBudgetCategory.text = budget.category.value
+                textBudgetCategory.text = budget.category.text
                 textBudgetCreatedAt.text = budget.createdAt.formatDate()
 
                 setBudgetCategoryTextBackground(budget.category)
@@ -44,14 +42,7 @@ class BudgetAdapter(
         }
 
         private fun setBudgetCategoryTextBackground(budgetCategory: BudgetCategory) {
-            @DrawableRes
-            val drawableResID =  when(budgetCategory) {
-                BudgetCategory.COMPLETED -> R.drawable.background_budget_category_completed
-                BudgetCategory.NOT_COMPLETED -> R.drawable.background_budget_category_not_completed
-                BudgetCategory.EXPIRED -> R.drawable.background_budget_category_expired
-            }
-
-            binding.textBudgetCategory.background = getDrawable(context, drawableResID)
+            binding.textBudgetCategory.background = getDrawable(context, budgetCategory.drawableResId)
         }
     }
 
