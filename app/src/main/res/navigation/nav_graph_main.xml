@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/fragment_home">
+    app:startDestination="@id/fragment_budgets">
 
     <fragment
-        android:id="@+id/fragment_home"
-        android:name="com.fernando.budgetmanager_gerenciadordeorcamentos.ui.fragments.HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        android:label="Orçamentos"
+        android:id="@+id/fragment_budgets"
+        android:name="com.fernando.budgetmanager_gerenciadordeorcamentos.ui.fragments.BudgetsFragment"
+        tools:layout="@layout/fragment_budgets"/>
 </navigation>

@@ -10,6 +10,7 @@ import com.fernando.budgetmanager_gerenciadordeorcamentos.enums.BudgetCategory
 import io.github.serpro69.kfaker.Faker
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.Month
 import java.util.UUID
 
 object BudgetFactory {
@@ -46,6 +47,21 @@ object BudgetFactory {
             items = budgetItems,
             createdAt = Date(LocalDate.now()),
             finishedAt = null,
+            category = budgetCategory
+        )
+    }
+
+    fun createBudgetWithFinishedAt(budgetItems: BudgetItems) : Budget {
+        val faker = Faker()
+        val budgetCategory = enumValues<BudgetCategory>().random()
+        val budgetName = faker.appliance.equipment()
+
+        return Budget(
+            id = UUID.randomUUID().toString(),
+            name = Name(budgetName),
+            items = budgetItems,
+            createdAt = Date(LocalDate.now()),
+            finishedAt = Date(LocalDate.of(2025, Month.MAY, 12)),
             category = budgetCategory
         )
     }

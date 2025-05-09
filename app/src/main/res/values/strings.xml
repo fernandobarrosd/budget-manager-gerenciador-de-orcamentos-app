@@ -5,6 +5,11 @@
     <string name="completed_text">Completado</string>
     <string name="not_completed_text">Não completado</string>
     <string name="expired_text">Expirado</string>
-    <string name="budget_category_button_select_text">Categoria</string>
+    <string name="btn_show_filters_dialog_text">Filtros</string>
     <string name="btn_remove_filter">Remover filtros</string>
+    <string name="categories_text">Categorias</string>
+    <string name="close_button_icon_content_description">Close button icon</string>
+    <string name="filter_budgets_by_quantity_button_text">Quantidade</string>
+    <string name="search_budgets_query_hint_text">Buscar orçamento…</string>
+    <string name="filters_title_text">Filtros</string>
 </resources>
