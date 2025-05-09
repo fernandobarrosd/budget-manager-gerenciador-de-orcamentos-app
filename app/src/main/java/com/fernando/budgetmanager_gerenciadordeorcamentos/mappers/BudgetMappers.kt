@@ -16,7 +16,7 @@ fun Budget.toRoomEntity() : BudgetEntity {
         name = this.name,
         category = this.category,
         createdAt = this.createdAtValue,
-        finishedAt = this.finishedAt
+        finishedAt = this.finishedAtValue
     )
 }
 

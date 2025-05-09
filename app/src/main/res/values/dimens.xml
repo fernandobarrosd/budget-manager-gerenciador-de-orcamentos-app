@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimension_elevation">8dp</dimen>
+    <dimen name="dimension_10">10dp</dimen>
+    <dimen name="dimension_radius">10dp</dimen>
+    <dimen name="dimension_radius_2">50dp</dimen>
+</resources>

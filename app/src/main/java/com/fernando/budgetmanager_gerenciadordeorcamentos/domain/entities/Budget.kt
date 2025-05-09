@@ -33,8 +33,11 @@ class Budget {
         get() = createdAt.value
 
     private val _finishedAt: Date?
-    val finishedAt: LocalDate?
-        get() = _finishedAt?.value
+    val finishedAt: Date?
+        get() = _finishedAt
+
+    val finishedAtValue: LocalDate?
+        get() = finishedAt?.value
 
     val total: Price
         get() = Price(items.sumOf { it.priceValue })
@@ -74,14 +77,13 @@ class Budget {
 
         val currentDate = Date(LocalDate.now())
 
-        if (this._category == BudgetCategory.NOT_COMPLETED == currentDate.isEqual(_finishedAt)) {
-            complete()
+        if (this._category == BudgetCategory.NOT_COMPLETED && currentDate.isEqual(_finishedAt)
+            && allBudgetItemsIsCompleted()) {
+            this._category = BudgetCategory.COMPLETED
         }
     }
 
-    fun allBudgetItemsIsCompleted() : Boolean {
-        return items.all { it.isCompleted }
-    }
+    fun allBudgetItemsIsCompleted() : Boolean = items.all { it.isCompleted }
 
     fun expire() {
         if (this._finishedAt == null) return

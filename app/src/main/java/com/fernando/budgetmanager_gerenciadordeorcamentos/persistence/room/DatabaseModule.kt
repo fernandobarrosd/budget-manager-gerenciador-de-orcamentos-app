@@ -33,9 +33,20 @@ class DatabaseModule {
             .addCallback(object: RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    val budgets = List(10) {
+                    initializeDatabase()
+                }
+
+                private fun initializeDatabase() {
+                    val budgets = MutableList(5) {
                         BudgetFactory.createBudget(BudgetFactory.createBudgetItems())
                     }
+
+                    val budgetsWithFinishedAt = List(5) {
+                        BudgetFactory.createBudgetWithFinishedAt(BudgetFactory.createBudgetItems())
+                    }
+
+                    budgets.addAll(budgetsWithFinishedAt)
+
 
                     budgets.forEach { budget ->
                         val budgetItemEntities = budget.items.map { budgetItem ->
@@ -48,6 +59,7 @@ class DatabaseModule {
                         }
                     }
                 }
+
             })
             .build()
 
